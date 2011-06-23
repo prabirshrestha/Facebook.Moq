@@ -29,6 +29,18 @@ Shorthand for the above code is
 
 	var mockFb = FacebookMock.New();
 
+### Return particular json result for any requests.
+
+	mockFb
+		.FbSetup()
+		.ReturnsJson("{\"id\":\"4\",\"name\":\"Mark Zuckerberg\",\"first_name\":\"Mark\",\"last_name\":\"Zuckerberg\",\"link\":\"http:\\/\\/www.facebook.com\\/zuck\",\"username\":\"zuck\",\"gender\":\"male\",\"locale\":\"en_US\"}");
+
+	var fb = mockFb.Object;
+
+	dynamic result = fb.Get("/4");
+
+	Assert.Equal("Mark Zuckerberg", result.name);
+
 ## License
 Facebook.Moq is intended to be used in both open-source and commercial environments.
 
