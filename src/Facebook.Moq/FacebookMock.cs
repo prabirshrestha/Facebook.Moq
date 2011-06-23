@@ -42,6 +42,11 @@ namespace Facebook.Moq
             return mock.FbSetup(ItExpr.Is(match), null, null, null);
         }
 
+        public static ISetup<FacebookClient, object> FbSetupIfPathIs(this Mock<FacebookClient> mock, string path)
+        {
+            return mock.FbSetupIfPath(p => p == path);
+        }
+
         public static ISetup<FacebookClient, object> FbSetupIfParameter(this Mock<FacebookClient> mock, Expression<Func<IDictionary<string, object>, bool>> match)
         {
             return mock.FbSetup(ItExpr.IsAny<string>(), ItExpr.Is(match), null, null);
