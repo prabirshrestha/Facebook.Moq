@@ -176,9 +176,9 @@ namespace Facebook.Moq
 
         public static class MediaObjects
         {
-            public static FacebookMediaObject JpegMediaObject()
+            public static FacebookMediaObject MediaObjectImageJpgeg()
             {
-                return new FacebookMediaObject { ContentType = "image/jpeg", FileName = "fbapi.jpeg" }.SetValue(JpegImage);
+                return new FacebookMediaObject { ContentType = "image/jpeg", FileName = "fbapi.jpeg" }.SetValue(ImageJpeg);
             }
 
 #if FACEBOOK_MOQ_WEB
@@ -200,8 +200,8 @@ namespace Facebook.Moq
 #endif
 
             #region Jpeg Image
-            
-            public static readonly byte[] JpegImage =
+
+            public static readonly byte[] ImageJpeg =
                 new byte[]
                     {
                         255, 216, 255, 224, 0, 16, 74, 70, 73, 70, 0, 1, 2, 0, 0, 100, 0, 100, 0, 0, 255, 236, 0, 17, 68
