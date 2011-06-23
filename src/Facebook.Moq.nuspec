@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<package xmlns='http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd'>
+    <metadata>
+        <id>Facebook.Moq</id>
+        <version>0.1.0.0</version>
+        <title/>
+        <authors>Prabir Shrestha</authors>
+        <description>Moq helpers for Facebook C# SDK.</description>
+        <language>en-US</language>
+        <licenseUrl>https://github.com/prabirshrestha/Facebook.Moq/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/prabirshrestha/Facebook.Moq</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Facebook</tags>
+        <dependencies>
+            <dependency id='Facebook' version='5.0.25.0'/>
+            <dependency id="Moq" version="4.0.10827" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src='Facebook.Moq\FacebookMock.cs' target='content' />
+    </files>
+</package>
