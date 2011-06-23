@@ -185,6 +185,15 @@ namespace Facebook.Moq
                            }.SetValue(new byte[] { 0, 0, 0 });
             }
 
+            public static FacebookMediaObject DummyImageMediaObject()
+            {
+                return new FacebookMediaObject
+                {
+                    ContentType = "image/jpeg",
+                    FileName = "dummy.img"
+                }.SetValue(new byte[] { 0, 0, 0 });
+            }
+
             public static FacebookMediaObject MediaObjectImageJpgeg()
             {
                 return new FacebookMediaObject { ContentType = "image/jpeg", FileName = "fbapi.jpeg" }.SetValue(ImageJpeg);
