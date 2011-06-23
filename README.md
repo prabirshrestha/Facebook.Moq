@@ -8,6 +8,7 @@ Facebook.Moq is a helper file aimed to ease unit testing for
 
 * Moq
 * Facebook C# SDK >= v5.0.25
+* .NET 4.0 (client profile supported too)
 
 You can use any unit testing library such as MSTests, XUnit.Net or NUnit with Facebook.Moq
 
@@ -32,4 +33,3 @@ Shorthand for the above code is
 Facebook.Moq is intended to be used in both open-source and commercial environments.
 
 Facebook.Moq is licensed under Microsoft Public License (MS-PL).
-
