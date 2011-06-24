@@ -110,27 +110,27 @@ namespace Facebook.Moq
 
         public static class Exceptions
         {
-            public static FacebookApiException AccessTokenRequired()
+            public static FacebookOAuthException AccessTokenRequired()
             {
                 return new FacebookOAuthException("An access token is required to request this resource.", "OAuthException");
             }
 
-            public static FacebookApiException ActiveAccessTokenRequired()
+            public static FacebookOAuthException ActiveAccessTokenRequired()
             {
                 return new FacebookOAuthException("An active access token must be used to query information about the current user.", "OAuthException");
             }
 
-            public static FacebookApiException InvalidOAuthAccessToken()
+            public static FacebookOAuthException InvalidOAuthAccessToken()
             {
                 return new FacebookOAuthException("Invalid OAuth access token.", "OAuthException");
             }
 
-            public static FacebookApiException AliasRequestedDoesNotExist(string path)
+            public static FacebookOAuthException AliasRequestedDoesNotExist(string path)
             {
                 return new FacebookOAuthException(string.Concat("(#803) Some of the aliases you requested do not exist: ", path), "OAuthException");
             }
 
-            public static FacebookApiException UnknownPathComponent(string path)
+            public static FacebookOAuthException UnknownPathComponent(string path)
             {
                 if (!path.StartsWith("/"))
                     path += "/";
