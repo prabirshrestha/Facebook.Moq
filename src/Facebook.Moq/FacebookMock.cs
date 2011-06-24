@@ -130,6 +130,11 @@ namespace Facebook.Moq
                 return new FacebookOAuthException(string.Concat("(#803) Some of the aliases you requested do not exist: ", path), "OAuthException");
             }
 
+            public static FacebookOAuthException RequiresAValidAppId()
+            {
+                return new FacebookOAuthException("(#200) This API call requires a valid app_id.");
+            }
+
             public static FacebookOAuthException UnknownPathComponent(string path)
             {
                 if (!path.StartsWith("/"))
