@@ -2,7 +2,7 @@
 <package xmlns='http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd'>
     <metadata>
         <id>Facebook.Moq</id>
-        <version>0.1.0.1</version>
+        <version>0.6.0.0</version>
         <title/>
         <authors>Prabir Shrestha</authors>
         <description>Moq helpers for Facebook C# SDK.</description>
@@ -12,7 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>Facebook</tags>
         <dependencies>
-            <dependency id='Facebook' version='5.0.25.0'/>
+            <dependency id='Facebook' version='6.0.10.0'/>
             <dependency id="Moq" version="4.0.10827" />
         </dependencies>
     </metadata>

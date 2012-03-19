@@ -13,6 +13,13 @@ namespace Facebook.Moq
 
     public static class FacebookMock
     {
+        private static FacebookClient _fb;
+
+        static FacebookMock()
+        {
+            _fb = new FacebookClient();
+        }
+
         public static Mock<FacebookClient> New()
         {
             return new Mock<FacebookClient> { CallBase = true };
@@ -26,9 +33,9 @@ namespace Facebook.Moq
         {
             return mock.Protected()
                 .Setup<object>("Api",
-                               path ?? ItExpr.IsAny<string>(),
-                               parameters ?? ItExpr.IsAny<IDictionary<string, object>>(),
                                httpMethod ?? ItExpr.IsAny<HttpMethod>(),
+                               path ?? ItExpr.IsAny<string>(),
+                               parameters ?? ItExpr.IsAny<object>(),
                                type ?? ItExpr.IsAny<Type>());
         }
 
@@ -68,13 +75,13 @@ namespace Facebook.Moq
 
         public static IReturnsResult<FacebookClient> ReturnsJson(this ISetup<FacebookClient, object> setup, string json)
         {
-            return setup.ReturnsJson(JsonSerializer.Current.DeserializeObject(json));
+            return setup.ReturnsJson(_fb.DeserializeJson(json, null));
         }
 
         public static IReturnsResult<FacebookClient> ReturnsJson<T>(this ISetup<FacebookClient, object> setup,
                                                                     string json)
         {
-            return setup.ReturnsJson(JsonSerializer.Current.DeserializeObject<T>(json));
+            return setup.ReturnsJson(_fb.DeserializeJson(json, typeof(T)));
         }
 
         #endregion
@@ -235,6 +242,20 @@ namespace Facebook.Moq
                 mock.Setup(m => m.ContentType).Returns(mediaObject.ContentType);
                 mock.Setup(m => m.FileName).Returns(System.IO.Path.Combine("C:\\downloads\\", mediaObject.FileName));
                 mock.Setup(m => m.InputStream).Returns(new System.IO.MemoryStream(data));
+
+                return mock;
+            }
+
+            public static Mock<System.Web.HttpPostedFileBase> ToHttpPostedFileBase(FacebookMediaStream mediaStream)
+            {
+                var mock = new Mock<System.Web.HttpPostedFileBase>();
+
+                var stream = mediaStream.GetValue();
+
+                mock.Setup(m => m.ContentLength).Returns(Convert.ToInt32(stream.Length));
+                mock.Setup(m => m.ContentType).Returns(mediaStream.ContentType);
+                mock.Setup(m => m.FileName).Returns(System.IO.Path.Combine("C:\\downloads\\", mediaStream.FileName));
+                mock.Setup(m => m.InputStream).Returns(stream);
 
                 return mock;
             }
